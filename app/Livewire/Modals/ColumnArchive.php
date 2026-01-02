@@ -14,19 +14,19 @@ class ColumnArchive extends ModalComponent
         $column = $this->board->columns->findOrFail($id);
 
         $column->update([
-            'archived_at' => null
+            'archived_at' => null,
         ]);
 
         $column->save();
 
         $this->dispatch('board-updated');
-//        $this->dispatch('closeModal');
+        //        $this->dispatch('closeModal');
     }
 
     public function render()
     {
         return view('livewire.modals.column-archive', [
-            'columns' => $this->board->columns()->archived()->latestArchived()->get()
+            'columns' => $this->board->columns()->archived()->latestArchived()->get(),
         ]);
     }
 }

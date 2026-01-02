@@ -11,10 +11,11 @@ use Spatie\EloquentSortable\SortableTrait;
 
 class Column extends Model implements Sortable
 {
+    use Archivable;
+
     /** @use HasFactory<\Database\Factories\ColumnFactory> */
     use HasFactory;
     use SortableTrait;
-    use Archivable;
 
     protected $guarded = ['id'];
 
@@ -23,14 +24,13 @@ class Column extends Model implements Sortable
         return static::query()->where('board_id', $this->board_id);
     }
 
-
     protected $casts = [
-        'archived_at' => 'datetime'
+        'archived_at' => 'datetime',
     ];
 
     public $sortable = [
         'order_column_name' => 'order',
-        'sort_when_creating' => true
+        'sort_when_creating' => true,
     ];
 
     public function cards()

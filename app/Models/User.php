@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Board::class);
     }
+
+    public function getInitials()
+    {
+        return explode(' ', $this->name)[0][0];
+    }
 }

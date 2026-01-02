@@ -3,7 +3,6 @@
 namespace App\Livewire\Modals;
 
 use App\Models\Board;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class CardArchive extends ModalComponent
@@ -15,18 +14,18 @@ class CardArchive extends ModalComponent
         $card = $this->board->cards->findOrFail($id);
 
         $card->update([
-            'archived_at' => null
+            'archived_at' => null,
         ]);
 
         $card->save();
 
-        $this->dispatch('column-' . $card->column->id . '-updated');
+        $this->dispatch('column-'.$card->column->id.'-updated');
     }
 
     public function render()
     {
         return view('livewire.modals.card-archive', [
-            'cards' => $this->board->cards()->archived()->latestArchived()->get()
+            'cards' => $this->board->cards()->archived()->latestArchived()->get(),
         ]);
     }
 }

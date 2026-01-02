@@ -9,7 +9,6 @@ use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 class BoardShow extends Component
-
 {
     public Board $board;
 
@@ -26,14 +25,14 @@ class BoardShow extends Component
     {
         $order = collect($items)->pluck('value')->toArray();
 
-        \App\Models\Column::setNewOrder($order, 1, 'id', function(Builder $query) {
+        \App\Models\Column::setNewOrder($order, 1, 'id', function (Builder $query) {
             $query->whereBelongsTo(auth()->user());
         });
     }
 
     public function moved(array $items)
     {
-        collect($items)->recursive()->each(function($column) {
+        collect($items)->recursive()->each(function ($column) {
             $columnId = $column->get('value');
 
             $order = $column->get('items')->pluck('value')->toArray();

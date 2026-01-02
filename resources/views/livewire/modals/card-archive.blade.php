@@ -1,16 +1,21 @@
 <x-modal-wrapper title="Archive cards">
-    <div class="max-h-96 overflow-y-scroll space-y-2">
+    <div class="max-h-96 space-y-2 overflow-y-auto">
         @forelse ($cards as $card)
-            <div class="border border-gray-200 rounded-lg px-3 py-2 flex items-center justify-between">
+            <div
+                class="flex items-center justify-between rounded-lg border border-gray-200 px-3 py-2"
+            >
                 <div>
                     {{ $card->title }}
                 </div>
-                <button wire:click="unarchiveCard({{ $card->id }})" class="text-sm text-gray-500">Put back</button>
+                <button
+                    wire:click="unarchiveCard({{ $card->id }})"
+                    class="text-sm text-gray-500"
+                >
+                    Put back
+                </button>
             </div>
-
         @empty
             <p>You have no archive cards</p>
-
         @endforelse
     </div>
 </x-modal-wrapper>

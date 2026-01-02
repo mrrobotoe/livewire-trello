@@ -3,7 +3,6 @@
 namespace App\Livewire\Modals;
 
 use App\Livewire\Forms\CreateBoardForm;
-use Livewire\Component;
 use LivewireUI\Modal\ModalComponent;
 
 class CreateBoard extends ModalComponent

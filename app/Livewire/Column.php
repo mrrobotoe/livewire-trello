@@ -9,7 +9,9 @@ use Livewire\Component;
 class Column extends Component
 {
     public \App\Models\Column $column;
+
     public EditColumnForm $editColumnForm;
+
     public CreateCardForm $createCardForm;
 
     protected $listeners = ['column-{column.id}-updated' => '$refresh'];
@@ -49,7 +51,7 @@ class Column extends Component
         $this->authorize('archive', $this->column);
 
         $this->column->update([
-            'archived_at' => now()
+            'archived_at' => now(),
         ]);
 
         $this->dispatch('board-updated');

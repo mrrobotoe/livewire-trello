@@ -8,19 +8,19 @@ trait Archivable
 {
     public function initializeArchivable(): void
     {
-       $this->mergeCasts([
-           'archived_at' => 'datetime'
-       ]);
+        $this->mergeCasts([
+            'archived_at' => 'datetime',
+        ]);
     }
 
     public function scopeNotArchived(Builder $query)
     {
-        $query->whereNull($this->getTable() . '.archived_at');
+        $query->whereNull($this->getTable().'.archived_at');
     }
 
     public function scopeArchived(Builder $query)
     {
-        $query->whereNotNull($this->getTable() . '.archived_at');
+        $query->whereNotNull($this->getTable().'.archived_at');
     }
 
     public function scopeLatestArchived(Builder $query)
